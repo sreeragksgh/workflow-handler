@@ -27,7 +27,7 @@ import org.sunbird.workflow.postgres.entity.WfStatusEntity;
 import org.sunbird.workflow.postgres.repo.WfAuditRepo;
 import org.sunbird.workflow.postgres.repo.WfStatusRepo;
 import org.sunbird.workflow.producer.Producer;
-import org.sunbird.workflow.repository.cassandra.bodhi.WfRepo;
+import org.sunbird.workflow.repository.cassandra.sunbird.WfRepo;
 import org.sunbird.workflow.service.UserProfileWfService;
 import org.sunbird.workflow.service.Workflowservice;
 

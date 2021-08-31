@@ -15,30 +15,30 @@ import org.springframework.data.cassandra.core.CassandraAdminTemplate;
 import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 
 @Configuration
-@ConfigurationProperties("spring.data.cassandra.bodhi")
-@EnableCassandraRepositories(basePackages = "org.sunbird.workflow.repository.cassandra.bodhi", cassandraTemplateRef = "bodhiTemplate")
-public class BodhiConfig extends CassandraConfig {
+@ConfigurationProperties("spring.data.cassandra.sunbird")
+@EnableCassandraRepositories(basePackages = "org.sunbird.workflow.repository.cassandra.sunbird", cassandraTemplateRef = "sunbirdTemplate")
+public class SunbirdConfig extends CassandraConfig {
 
-	private Logger logger = LoggerFactory.getLogger(BodhiConfig.class);
+	private Logger logger = LoggerFactory.getLogger(SunbirdConfig.class);
 
-	@Value("${spring.data.cassandra.bodhi.username}")
-	private String bodhiUser;
+	@Value("${spring.data.cassandra.sunbird.username}")
+	private String sunbirdUser;
 
-	@Value("${spring.data.cassandra.bodhi.password}")
-	private String bodhiPassword;
+	@Value("${spring.data.cassandra.sunbird.password}")
+	private String sunbirdPassword;
 
 	@Override
 	@Primary
-	@Bean(name = "bodhiTemplate")
+	@Bean(name = "sunbirdTemplate")
 	public CassandraAdminTemplate cassandraTemplate() throws Exception {
 		return new CassandraAdminTemplate(session().getObject(), cassandraConverter());
 	}
 
 	@Override
-	@Bean(name = "bodhiSession")
+	@Bean(name = "sunbirdSession")
 	public CassandraSessionFactoryBean session() {
 
-		AuthProvider authProvider = new PlainTextAuthProvider(bodhiUser, bodhiPassword);
+		AuthProvider authProvider = new PlainTextAuthProvider(sunbirdUser, sunbirdPassword);
 
 		CassandraSessionFactoryBean session = new CassandraSessionFactoryBean();
 		session.setCluster(Cluster.builder().addContactPoint(getContactPoints()).withPort(getPort())
