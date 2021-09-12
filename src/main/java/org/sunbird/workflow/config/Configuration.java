@@ -33,6 +33,9 @@ public class Configuration {
     @Value("${userrole.search.endpoint}")
     private String userRoleSearchEndpoint;
 
+    @Value("${workflow.config.endpoint}")
+    private String workflowConfigEndpoint;
+
     @Value("${kafka.topics.workflow.request}")
     private String workflowApplicationTopic;
 
@@ -53,6 +56,14 @@ public class Configuration {
 
     @Value("${hub.profile.search}")
     private String hubProfileSearchEndPoint;
+
+    public String getWorkflowConfigEndpoint() {
+        return workflowConfigEndpoint;
+    }
+
+    public void setWorkflowConfigEndpoint(String workflowConfigEndpoint) {
+        this.workflowConfigEndpoint = workflowConfigEndpoint;
+    }
 
     @Value("${kafka.topics.workflow.notification}")
     private String workFlowNotificationTopic;

@@ -406,7 +406,7 @@ public class WorkflowServiceImpl implements Workflowservice {
 		Response response = new Response();
 		try {
 			StringBuilder builder = new StringBuilder();
-			String endPoint = "api/data/v1/system/settings/get/workFlowConfig";
+			String endPoint = configuration.getWorkflowConfigEndpoint();
 			builder.append(configuration.getLexCoreServiceHost()).append(endPoint);
 			Map<String, Object> response1 = (Map<String, Object>) requestServiceImpl.fetchResultUsingGet(builder);
 			Workflow workFlow = (Workflow) response1;
