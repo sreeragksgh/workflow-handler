@@ -405,7 +405,12 @@ public class WorkflowServiceImpl implements Workflowservice {
 	public Response getNextActionForState(String rootOrg, String org, String serviceName, String state) {
 		Response response = new Response();
 		try {
-			Workflow workFlow = wfRepo.getWorkFlowForService(rootOrg, org, serviceName);
+//			Workflow workFlow = wfRepo.getWorkFlowForService(rootOrg, org, serviceName);
+			StringBuilder builder = new StringBuilder();
+			String endPoint = configuration.getWorkflowConfigEndpoint();
+			builder.append(configuration.getLexCoreServiceHost()).append(endPoint);
+			Map<String, Object> response1 = (Map<String, Object>) requestServiceImpl.fetchResultUsingGet(builder);
+			Workflow workFlow = (Workflow) response1;
 			WorkFlowModel workFlowModel = mapper.readValue(workFlow.getConfiguration(), WorkFlowModel.class);
 			WfStatus wfStatus = getWfStatus(state, workFlowModel);
 			List<HashMap<String, Object>> nextActionArray = new ArrayList<>();

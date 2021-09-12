@@ -63,6 +63,17 @@ public class Configuration {
     @Value("${sunbird.user.search.endpoint}")
     private String lmsUserSearchEndpoint;
 
+    @Value("${workflow.config.endpoint}")
+    private String workflowConfigEndpoint;
+
+    public String getWorkflowConfigEndpoint() {
+        return workflowConfigEndpoint;
+    }
+
+    public void setWorkflowConfigEndpoint(String workflowConfigEndpoint) {
+        this.workflowConfigEndpoint = workflowConfigEndpoint;
+    }
+
     public Integer getDefaultLimit() {
         return defaultLimit;
     }
