@@ -408,8 +408,8 @@ public class WorkflowServiceImpl implements Workflowservice {
 			StringBuilder builder = new StringBuilder();
 			String endPoint = configuration.getWorkflowConfigEndpoint();
 			builder.append(configuration.getLexCoreServiceHost()).append(endPoint);
-			Map<String, Object> response1 = (Map<String, Object>) requestServiceImpl.fetchResultUsingGet(builder);
-			Workflow workFlow = (Workflow) response1;
+			Map<String, Object> configResponse = (Map<String, Object>) requestServiceImpl.fetchResultUsingGet(builder);
+			Workflow workFlow = (Workflow) configResponse;
 			WorkFlowModel workFlowModel = mapper.readValue(workFlow.getConfiguration(), WorkFlowModel.class);
 			WfStatus wfStatus = getWfStatus(state, workFlowModel);
 			List<HashMap<String, Object>> nextActionArray = new ArrayList<>();
