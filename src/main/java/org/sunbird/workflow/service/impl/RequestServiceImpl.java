@@ -40,8 +40,11 @@ public class RequestServiceImpl {
 				.append(System.lineSeparator());
 		str.append("URI: ").append(uri.toString()).append(System.lineSeparator());
 		try {
-			str.append("Request: ").append(mapper.writeValueAsString(request)).append(System.lineSeparator());
+			if( str!= null ){
+
+				str.append("Request: ").append(mapper.writeValueAsString(request)).append(System.lineSeparator());
 			log.debug(str.toString());
+			}
 		} catch (JsonProcessingException e) {
 			log.error("Json processing exception occured: ", e);
 		}
@@ -55,7 +58,9 @@ public class RequestServiceImpl {
 				.append(System.lineSeparator());
 		str.append("URI: ").append(uri.toString()).append(System.lineSeparator());
 		try {
-			log.debug(str.toString());
+			if( str!= null ) {
+				log.debug(str.toString());
+			}
 			response = restTemplate.getForObject(uri.toString(), Map.class);
 		} catch (HttpClientErrorException e) {
 			log.error("External Service threw an Exception: ", e);

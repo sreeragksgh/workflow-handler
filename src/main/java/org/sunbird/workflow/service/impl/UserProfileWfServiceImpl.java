@@ -6,12 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+//import org.springframework.http.HttpEntity;
+//import org.springframework.http.HttpHeaders;
+//import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.client.HttpClientErrorException;
+//import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.sunbird.workflow.config.Configuration;
 import org.sunbird.workflow.config.Constants;
@@ -91,7 +91,9 @@ public class UserProfileWfServiceImpl implements UserProfileWfService {
         for (Map.Entry<String, List<WfStatusEntity>> wfStatusEntity : wfInfos.entrySet()) {
             responseMap = new HashMap<>();
             responseMap.put("wfInfo", wfStatusEntity.getValue());
-            responseMap.put("userInfo", userResult.get(wfStatusEntity.getKey()));
+            if(userResult!=null) {
+                responseMap.put("userInfo", userResult.get(wfStatusEntity.getKey()));
+            }
             wfDetails.add(responseMap);
         }
         return wfDetails;

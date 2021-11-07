@@ -544,8 +544,12 @@ public class WorkflowServiceImpl implements Workflowservice {
 		applicationStatus.setLastUpdatedOn(new Date());
 		applicationStatus.setCurrentStatus(Constants.APPROVED_STATE);
 		applicationStatus.setActorUUID(wfRequest.getActorUserId());
-		applicationStatus
-				.setDeptName(getDepartmentDetails(wfRequest.getUpdateFieldValues().stream().findFirst().get()));
+		try {
+			applicationStatus
+					.setDeptName(getDepartmentDetails(wfRequest.getUpdateFieldValues().stream().findFirst().orElse(null)));
+		} catch (Exception e) {
+			throw new ApplicationException(Constants.WORKFLOW_PARSING_ERROR_MESSAGE, e);
+		}
 		wfRequest.setWfId(wfId);
 		wfRequest.setAction(Constants.APPROVE_STATE);
 		wfRequest.setState(Constants.APPROVED_STATE);

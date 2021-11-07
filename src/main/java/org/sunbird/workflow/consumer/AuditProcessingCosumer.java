@@ -1,16 +1,16 @@
 package org.sunbird.workflow.consumer;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.TopicPartition;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+//
+//import org.apache.kafka.clients.consumer.ConsumerRecord;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.kafka.annotation.KafkaListener;
+//import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Service;
-import org.sunbird.workflow.models.WfRequest;
-import org.sunbird.workflow.service.impl.WorkflowAuditProcessingServiceImpl;
+//import org.sunbird.workflow.models.WfRequest;
+//import org.sunbird.workflow.service.impl.WorkflowAuditProcessingServiceImpl;
 
 @Service
 public class AuditProcessingCosumer {
